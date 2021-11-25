@@ -49,10 +49,6 @@ jobs:
         path: /tmp/fibo-nos
         key: prime-nos
 
-    - name: check cache
-      if: steps.cache-primes.outputs.cache-hit != 'true'
-      run: echo "Cache not found"; exit 1
-
     - name: Print Primes
       run: cat /tmp/prime-nos; cat /tmp/fibo-nos
    
