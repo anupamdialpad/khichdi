@@ -9,17 +9,23 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Cache Primes
+    - name: Generate Primes
+      run: gen_primes.py > /tmp/prime-nos
+
+    - name: Cache prime nos
       id: cache-primes
       uses: actions/cache@v2
       with:
-        path: prime-numbers
-        key: primes
+        path: /tmp/prime-nos
+        key: prime-nos
 
-    - name: Generate Prime Numbers
-      if: steps.cache-primes.outputs.cache-hit != 'true'
-      run: /generate-primes.sh -d prime-numbers
+    - name: check cache
+      run: echo "prime cached={{ steps.cache-primes.outputs.cache-hit }}"
 
-    - name: Use Prime Numbers
-      run: /primes.sh -d prime-numbers
+  run:
+    runs-on: ubuntu-latest
+    needs: [build]
+
+    steps: Use cache
+    run: echo "Hello World"
 
