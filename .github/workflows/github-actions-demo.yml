@@ -41,7 +41,9 @@ jobs:
       id: cache-primes
       uses: actions/cache@v2
       with:
-        path: /tmp/prime-nos
+        path: |
+          /tmp/prime-nos
+          /tmp/fibo-nos
         key: prime-nos
 
     - name: check cache
@@ -49,5 +51,5 @@ jobs:
       run: echo "Cache not found"; exit 1
 
     - name: Print Primes
-      run: cat /tmp/prime-nos
+      run: cat /tmp/prime-nos; cat /tmp/fibo-nos
    
