@@ -26,6 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build]
 
-    steps: Use cache
-    run: echo "Hello World"
+    steps:
+    - name: Use cache
+      run: echo "Hello World"
 
