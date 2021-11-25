@@ -49,6 +49,14 @@ jobs:
         path: /tmp/fibo-nos
         key: prime-nos-${{ github.sha }}
 
+    - name: Fetch both prime and fibo
+      uses:  actions/cache@v2
+      with:
+        path: |
+          /tmp/fibo-nos
+          /tmp/prime-nos
+        key: prime-nos-${{ github.sha }}
+
     - name: Print Primes
       run: cat /tmp/prime-nos; cat /tmp/fibo-nos
    
