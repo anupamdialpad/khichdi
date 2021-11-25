@@ -12,6 +12,9 @@ jobs:
     - name: Generate Primes
       run: python3 gen_primes.py > /tmp/prime-nos
 
+    - name: Generate Fibonnaci
+      run: python3 gen_primes.py > /tmp/fibo-nos
+
     - name: Cache prime nos
       id: cache-primes
       uses: actions/cache@v2
@@ -19,8 +22,15 @@ jobs:
         path: /tmp/prime-nos
         key: prime-nos
 
+    - name: Cache fibonacci nos
+      id: cache-fibo
+      uses: actions/cache@v2
+      with:
+        path: /tmp/fibo-nos
+        key: prime-nos
+          
     - name: check cache
-      run: echo "prime cached=${{ steps.cache-primes.outputs.cache-hit }}"
+      run: echo "prime cached=${{ steps.cache-primes.outputs.cache-hit }}, ${{ steps.cache-fibo.outputs.cache-hit }}"
 
   run:
     runs-on: ubuntu-latest
@@ -31,7 +41,7 @@ jobs:
       id: cache-primes
       uses: actions/cache@v2
       with:
-        path: /tmp/prime-unos
+        path: /tmp/prime-nos
         key: prime-nos
 
     - name: check cache
