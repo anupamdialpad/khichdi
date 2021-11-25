@@ -38,12 +38,16 @@ jobs:
 
     steps:
     - name: Check cache
-      id: cache-primes
       uses: actions/cache@v2
       with:
-        path: |
-          /tmp/prime-nos
-          /tmp/fibo-nos
+        path: /tmp/prime-nos
+        key: prime-nos
+
+    steps:
+    - name: Check fibo cache
+      uses: actions/cache@v2
+      with:
+        path: /tmp/fibo-nos
         key: prime-nos
 
     - name: check cache
