@@ -19,14 +19,14 @@ jobs:
       id: cache-primes
       uses: actions/cache@v2
       with:
-        path: /tmp/prime-nos
+        path: /tmp/generator/prime-nos
         key: prime-nos-${{ github.sha }}
 
     - name: Cache fibonacci nos
       id: cache-fibo
       uses: actions/cache@v2
       with:
-        path: /tmp/fibo-nos
+        path: /tmp/generator/fibo-nos
         key: prime-nos-${{ github.sha }}
           
     - name: check cache
@@ -40,21 +40,19 @@ jobs:
     - name: Check cache
       uses: actions/cache@v2
       with:
-        path: /tmp/prime-nos
+        path: /tmp/generator/prime-nos
         key: prime-nos-${{ github.sha }}
 
     - name: Check fibo cache
       uses: actions/cache@v2
       with:
-        path: /tmp/fibo-nos
+        path: /tmp/generator/fibo-nos
         key: prime-nos-${{ github.sha }}
 
     - name: Fetch both prime and fibo
       uses:  actions/cache@v2
       with:
-        path: |
-          /tmp/fibo-nos
-          /tmp/prime-nos
+        path: /tmp/generator/*
         key: prime-nos-${{ github.sha }}
 
     - name: Print Primes
