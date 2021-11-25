@@ -20,7 +20,7 @@ jobs:
         key: prime-nos
 
     - name: check cache
-      run: echo "prime cached={{ steps.cache-primes.outputs.cache-hit }}"
+      run: echo "prime cached=${{ steps.cache-primes.outputs.cache-hit }}"
 
   run:
     runs-on: ubuntu-latest
