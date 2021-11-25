@@ -20,14 +20,14 @@ jobs:
       uses: actions/cache@v2
       with:
         path: /tmp/prime-nos
-        key: prime-nos
+        key: prime-nos-${{ github.sha }}
 
     - name: Cache fibonacci nos
       id: cache-fibo
       uses: actions/cache@v2
       with:
         path: /tmp/fibo-nos
-        key: prime-nos
+        key: prime-nos-${{ github.sha }}
           
     - name: check cache
       run: echo "prime cached=${{ steps.cache-primes.outputs.cache-hit }}, ${{ steps.cache-fibo.outputs.cache-hit }}"
@@ -41,13 +41,13 @@ jobs:
       uses: actions/cache@v2
       with:
         path: /tmp/prime-nos
-        key: prime-nos
+        key: prime-nos-${{ github.sha }}
 
     - name: Check fibo cache
       uses: actions/cache@v2
       with:
         path: /tmp/fibo-nos
-        key: prime-nos
+        key: prime-nos-${{ github.sha }}
 
     - name: Print Primes
       run: cat /tmp/prime-nos; cat /tmp/fibo-nos
