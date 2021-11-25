@@ -9,8 +9,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Generate Primes
-      run: python3 gen_primes.py > /tmp/prime-nos
 
     - name: Cache prime nos
       id: cache-primes
