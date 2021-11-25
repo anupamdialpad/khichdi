@@ -27,6 +27,14 @@ jobs:
     needs: [build]
 
     steps:
-    - name: Use cache
-      run: echo "Hello World"
+    - name: Check cache
+      id: cache-primes
+      uses: actions/cache@v2
+      with:
+        path: /tmp/prime-nos
+        key: prime-nos
 
+    - name: check cache
+      run: echo "prime cached=${{ steps.cache-primes.outputs.cache-hit }}"
+
+   
