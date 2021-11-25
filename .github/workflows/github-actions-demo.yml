@@ -31,7 +31,7 @@ jobs:
       id: cache-primes
       uses: actions/cache@v2
       with:
-        path: /tmp/prime-nos
+        path: /tmp/prime-unos
         key: prime-nos
 
     - name: check cache
