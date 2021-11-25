@@ -35,6 +35,9 @@ jobs:
         key: prime-nos
 
     - name: check cache
-      run: echo "prime cached=${{ steps.cache-primes.outputs.cache-hit }}"
+      if: steps.cache-primes.outputs.cache-hit != 'true'
+      run: echo "Cache not found"; exit 1
 
+    - name: Print Primes
+      run: cat /tmp/prime-nos
    
